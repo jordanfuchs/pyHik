@@ -505,6 +505,7 @@ class HikCamera(object):
                 stream = self.hik_request.get(url, stream=True,
                                               timeout=(CONNECT_TIMEOUT,
                                                        READ_TIMEOUT))
+                _LOGGING.debug('Stream Response: Status: %s, Text: %s', stream.status_code, stream.text)                
                 if stream.status_code == requests.codes.not_found:
                     # Try alternate URL for stream
                     url = '%s/Event/notification/alertStream' % self.root_url
